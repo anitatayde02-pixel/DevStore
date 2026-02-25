@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DevStore | Premium Dropshipping Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> 
+       </head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-primary" href="#" onclick="navTo('home')"><i class="fas fa-cube"></i> Dev Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <form class="d-flex mx-auto col-lg-5 my-2 my-lg-0">
+                    <input class="form-control me-2" type="search" id="searchInput" placeholder="Search products...">
+                    <button class="btn btn-outline-primary" type="button" onclick="doSearch()"><i class="fas fa-search"></i></button>
+                </form>
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link" onclick="navTo('home')" style="cursor: pointer;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" onclick="navTo('shop')" style="cursor: pointer;">Shop</a></li>
+                    <li class="nav-item position-relative me-2">
+    <a class="nav-link" href="javascript:void(0)" onclick="navTo('cart')">
+        <i class="fas fa-shopping-bag fa-lg"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge">0</span>
+    </a>
+</li>
+                    <li class="nav-item dropdown" id="auth-section"></li>
+                    <li class="nav-item">
+    <a class="nav-link" onclick="navTo('orders')" style="cursor: pointer;">
+        <i class="fas fa-box"></i> My Orders
+    </a>
+</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+      <div id="view-home" class="view-section active-view">
+        
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+    
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button> </div>
+
+    <div class="carousel-inner">
+        
+        <div class="carousel-item active" style="background-image: url('images/jainica-dhingra-udCX1mvNFos-unsplash.jpg');">
+            <div class="carousel-overlay">
+                <div>
+                    <h1 class="display-3 fw-bold">All Saree</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url('images/Kurtis\ with\ Dupatta\ Sets.avif');">
+            <div class="carousel-overlay">
+                <div>
+                    <h1 class="display-3 fw-bold">Kurtis with Dupatta Sets</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url('images/braidal\ sarees.jpg');">
+            <div class="carousel-overlay">
+                <div>
+                    <h1 class="display-3 fw-bold">Bridal Sarees</h1>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="carousel-item" style="background-image: url('images/istockphoto-1077567870-1024x1024.jpg');">
+            <div class="carousel-overlay">
+                <div>
+                    <h1 class="display-3 fw-bold">Women Gowns</h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>
+        <div class="container pb-5">
+            
+            <div class="category-scroll my-4">
+                <div class="category-item" onclick="filterSort('Sarees'); navTo('shop')">
+                    <img src="images/sabesh-photography-ltd-njVir8eVq1M-unsplash.jpg" class="category-img">
+                    <div class="category-name">Sarees</div>
+                </div>
+                <div class="category-item" onclick="navTo('shop')">
+                    <img src="images/shahenaz-india-Yci8aYzkjpk-unsplash.jpg" class="category-img">
+                    <div class="category-name">Kurtis</div>
+                </div>
+                <div class="category-item" onclick="navTo('shop')">
+                    <img src="images/Kurtis with Dupatta Sets.avif" class="category-img">
+                    <div class="category-name">Kurtis with Dupatta Sets</div>
+                </div>
+                <div class="category-item" onclick="navTo('shop')">
+                    <img src="images/gowen.avif" class="category-img">
+                    <div class="category-name">Women Gowns</div>
+                </div>
+                <div class="category-item" onclick="navTo('shop')">
+                    <img src="images/Anarkali Kurtis.avif" class="category-img">
+                    <div class="category-name">Anarkali Kurtis</div>
+                  </div>
+                 <div class="category-item" onclick="navTo('shop')">
+                    <img src="images/Bridal Sarees.avif" class="category-img">
+                    <div class="category-name">Bridal Sarees</div>
+                </div>
+            </div>
+
+            <h3 class="fw-bold mb-4 border-start border-4 border-primary ps-3">Featured Collection</h3>
+            <div class="row g-4" id="home-featured-grid">
+                <p class="text-muted">Loading products...</p>
+            </div>
+            
+            <h3 class="fw-bold mb-4 mt-5 border-start border-4 border-warning ps-3">Trending Now</h3>
+            <div class="row g-4" id="home-trending-grid">
+                <p class="text-muted">Loading products...</p>
+            </div>
+        </div>
+    </div>
+   
+    <div id="view-shop" class="view-section container my-5">
+        <div class="d-flex justify-content-between mb-4"><h2>All Products</h2></div>
+        <div class="row g-4" id="shop-grid"></div>
+    </div>
+
+    <div id="view-product" class="view-section" style="padding-top: 80px; padding-bottom: 50px;">
+    <div class="container">
+        
+        <button class="btn btn-outline-secondary mb-4" onclick="navTo('home')">
+            <i class="fas fa-arrow-left"></i> Back to Shop
+        </button>
+
+        <div class="row align-items-center">
+            
+            <div class="col-md-6 text-center mb-4">
+                <img id="detail-img" src="" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: contain;">
+                <div id="gallery-container" class="d-flex justify-content-center flex-wrap mt-2"></div>
+            </div>
+
+            <div class="col-md-6">
+                <span class="badge bg-warning text-dark mb-2" id="detail-cat">Category</span>
+                <h2 id="detail-title" class="fw-bold mb-3">Product Name</h2>
+                <h3 class="text-primary mb-4" id="detail-price">₹0</h3>
+                
+                <p class="text-muted mb-4">
+                    This is a premium quality product. Order now for fast delivery and secure payment.
+                </p>
+
+                <div class="row mb-4 gx-2">
+    
+    <div class="col-4">
+        <div class="p-2 border rounded text-center bg-light h-100 d-flex flex-column justify-content-center">
+            <small class="text-muted d-block" style="font-size: 10px; font-weight: bold;">FABRIC</small>
+            <span id="detail-fabric" class="text-dark small fw-bold">Loading...</span>
+        </div>
+    </div>
+    
+    <div class="col-4">
+        <div class="p-2 border rounded text-center bg-light h-100 d-flex flex-column justify-content-center">
+            <small class="text-muted d-block" style="font-size: 10px; font-weight: bold;">COLOR</small>
+            <span id="detail-color" class="text-dark small fw-bold">Loading...</span>
+        </div>
+    </div>
+
+    <div class="col-4" id="extra-detail-container" style="display: none;">
+        <div class="p-2 border rounded text-center bg-light h-100 d-flex flex-column justify-content-center">
+            <small class="text-muted d-block" style="font-size: 10px; font-weight: bold;">INFO</small>
+            <span id="detail-extra" class="text-dark small fw-bold" style="font-size: 11px; line-height: 1.2;">-</span>
+        </div>
+    </div>
+
+</div>
+<div class="mt-3">
+                    <small class="text-muted fw-bold" style="font-size: 12px;">SELECT SIZE</small>
+                    <div id="size-container" class="d-flex flex-wrap gap-2 mt-1"></div>
+                    <input type="hidden" id="selected-size-input">
+                </div>
+<div class="d-flex align-items-center mb-4 mt-3">
+                    <span class="me-3 fw-bold text-muted">Quantity:</span>
+                    <div class="input-group" style="width: 140px;">
+                        <button class="btn btn-outline-secondary" onclick="changeQty(-1)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="text" id="product-qty" class="form-control text-center border-secondary" value="1" readonly style="background: white;">
+                        <button class="btn btn-outline-secondary" onclick="changeQty(1)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button class="btn btn-dark btn-lg w-100 py-3" onclick="addToCartCurrent()">
+                    <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+                </button>
+
+            </div> </div> </div> </div> ```
+
+    <div id="view-cart" class="view-section container my-5">
+        <h2 class="mb-4">Your Shopping Cart</h2>
+        <div class="row">
+            <div class="col-lg-8"><div class="card border-0 shadow-sm p-3" id="cart-container"><p class="text-center text-muted">Empty</p></div></div>
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm p-4">
+                    <h4>Summary</h4><hr>
+                    <div class="d-flex justify-content-between mb-2"><span>Total</span><span id="cart-total">₹0</span></div>
+                    <button class="btn btn-primary" onclick="openCheckout()">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="view-orders" class="view-section container my-5">
+        <h2 class="mb-4">📦 Track My Orders</h2>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm mb-4 h-100">
+                    <h5 class="mb-3 text-primary"><i class="fas fa-envelope"></i> Search by Email</h5>
+                    <p class="text-muted small">View all your past orders.</p>
+                    <label class="form-label">Email Address:</label>
+                    <div class="input-group">
+                        <input type="email" id="track-email" class="form-control" placeholder="customer@gmail.com">
+                        <button class="btn btn-primary" onclick="findMyOrders()">Search</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm mb-4 h-100 border-start border-4 border-info">
+                    <h5 class="mb-3 text-info"><i class="fas fa-shipping-fast"></i> Track by ID</h5>
+                    <p class="text-muted small">Have a Tracking ID? Check live status.</p>
+                    <label class="form-label">Tracking ID:</label>
+                    <div class="input-group">
+                        <input type="text" id="direct-tracking-id" class="form-control" placeholder="e.g. FEDEX-123">
+                        <button class="btn btn-dark" onclick="trackDirectly()">Track Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="my-orders-list" class="mt-4"></div>
+    </div>
+    <div id="view-faqs" class="view-section container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Frequently Asked Questions</h2>
+        <p class="text-muted">Have questions? We're here to help.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="accordion shadow-sm" id="faqAccordion">
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            📦 How long will delivery take?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our standard shipping typically takes <strong>5 to 10 business days</strong>. However, depending on your location, it might take up to 15 days. You will receive a tracking link as soon as your order is shipped.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            💰 What payment methods do you accept?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We accept all major credit cards, debit cards, UPI (Google Pay, PhonePe, Paytm), and Net Banking via our secure payment gateway.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            🔄 What is your Return Policy?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We offer a <strong>7-day return policy</strong> for damaged or incorrect items. Please record an unboxing video as proof and contact our support team within 7 days of delivery.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            🚚 How can I track my order?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can easily track your order by visiting the <a href="#" onclick="navTo('orders')">My Orders</a> page. Enter your email or Tracking ID to see the live status.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            📞 How do I contact customer support?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can email us at <strong>anitatayde02@gmail.com</strong> or use the Contact Form available in the footer section. We usually reply within 24 hours.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-white"><i class="fas fa-cube text-primary"></i> Dev Store</h5>
+                    <p>Your one-stop destination for premium dropshipping products. Quality assured and fast delivery worldwide.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5>Shop</h5>
+                    <a href="#" onclick="navTo('shop')">New Arrivals</a>
+                    <a href="#" onclick="navTo('shop')">Best Sellers</a>
+                    <a href="#" onclick="navTo('shop')">Electronics</a>
+                    <a href="#" onclick="navTo('shop')">Fashion</a>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+    <h5 class="text-white">Support</h5>
+
+<a href="index.html" class="footer-link">Track Order</a>
+
+<a href="contact.html" class="footer-link">Contact Us</a>
+
+<a href="refund.html" class="footer-link">Returns Policy</a>
+
+<a href="faq.html" class="footer-link">FAQs</a>
+    
+</div>
+                
+                <!--<div class="col-md-4 mb-4">
+                    <h5>Stay Updated</h5>
+                    <p>Subscribe to our newsletter for latest updates and offers.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-.,l;control" placeholder="Enter your email">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        
+       <div class="footer-bottom text-center py-3 mt-4 border-top border-secondary">
+    <div class="container">
+        <p class="mb-2 text-white-50">
+            &copy; 2026 Dev Store. All Rights Reserved.
+        </p>
+        
+        <div class="text-white-50">
+            <i class="fab fa-cc-visa fa-lg mx-2"></i>
+            <i class="fab fa-cc-mastercard fa-lg mx-2"></i>
+            <i class="fab fa-cc-paypal fa-lg mx-2"></i>
+            <i class="fab fa-cc-amex fa-lg mx-2"></i>
+        </div>
+    </div>
+</div>
+    </footer>
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Login</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="login-form">
+                        <input type="email" id="login-email" class="form-control mb-2" placeholder="Email Address">
+                        <input type="password" id="login-pass" class="form-control mb-3" placeholder="Password">
+                        <button class="btn btn-primary w-100" onclick="performLogin()">Sign In</button>
+                        <p class="text-center mt-3 small">Don't have an account? <a href="#" onclick="toggleAuthMode('register')">Register Here</a></p>
+                    </div>
+
+                    <div id="register-form" style="display:none;">
+                        <input type="text" id="reg-name" class="form-control mb-2" placeholder="Full Name">
+                        <input type="email" id="reg-email" class="form-control mb-2" placeholder="Email Address">
+                        <input type="password" id="reg-pass" class="form-control mb-3" placeholder="Create Password">
+                        <button class="btn btn-success w-100" onclick="performRegister()">Create Account</button>
+                        <p class="text-center mt-3 small">Already have an account? <a href="#" onclick="toggleAuthMode('login')">Login Here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="fas fa-lock"></i> Secure Checkout</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            
+           <div class="modal-body">
+    
+    <div class="text-center mb-4 p-3" style="background: #f0f8ff; border: 2px dashed #0d6efd; border-radius: 10px;">
+        <h6 class="fw-bold text-primary">Step 1: Scan & Pay</h6>
+        <img src="images/qr.jpeg" alt="Payment QR" style="width: 180px; border-radius: 8px; margin: 10px 0;">
+        <p class="small text-muted mb-0">Google Pay / PhonePe / Paytm</p>
+        <div class="mt-2">
+            <span class="badge bg-success fs-6">Total to Pay: <span id="checkout-total-display">Loading...</span></span>
+        </div>
+    </div>
+
+    <form id="checkoutForm">
+        <h6 class="fw-bold">Step 2: Shipping Details</h6>
+        
+        <div class="mb-3">
+            <label class="form-label small text-muted">Full Name</label>
+            <input type="text" id="cust-name" class="form-control" placeholder="Enter Name" required>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label small text-muted">Phone</label>
+                <input type="tel" id="cust-phone" class="form-control" placeholder="Mobile No." required>
+            </div>
+            <div class="col-6 mb-3">
+                <label class="form-label small text-muted">Email</label>
+                <input type="email" id="cust-email" class="form-control" placeholder="Email" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label small text-muted">Full Address</label>
+            <textarea id="cust-address" class="form-control" rows="2" placeholder="House No, Area, City" required></textarea>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <label class="form-label small text-muted">City</label>
+                <input type="text" id="cust-city" class="form-control" required>
+            </div>
+            <div class="col-6 mb-3">
+                <label class="form-label small text-muted">Pincode</label>
+                <input type="number" id="cust-zip" class="form-control" required>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold text-danger">Step 3: Enter Payment Transaction ID *</label>
+            <input type="text" class="form-control border-danger" id="txn-id" placeholder="Ex: UTR/Ref No. 123456789" required>
+            <div class="form-text text-danger small">Payment के बाद UTR या Ref Number यहाँ जरूर लिखें।</div>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+                Verify Payment & Place Order <i class="fas fa-check-circle ms-2"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // --- 1. GLOBAL VARIABLES ---
+    let products = [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let user = JSON.parse(localStorage.getItem('user')) || null;
+    let currentProduct = null;
+
+    // --- 2. INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchProducts();
+        updateCartUI();
+        updateAuthUI();
+    });
+
+    // --- 3. AUTHENTICATION LOGIC ---
+    function updateAuthUI() {
+        const container = document.getElementById('auth-section');
+        if (!container) return; // Error prevention
+
+        if (user) {
+            container.innerHTML = `
+                <a class="nav-link dropdown-toggle fw-bold text-primary" href="#" role="button" data-bs-toggle="dropdown">Hello, ${user.name.split(' ')[0]}</a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    ${user.role === 'admin' ? '<li><a class="dropdown-item text-danger fw-bold" href="/admin" target="_blank">Admin Panel</a></li><li><hr class="dropdown-divider"></li>' : ''}
+                    <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                </ul>`;
+        } else {
+            container.innerHTML = `<button class="btn btn-outline-dark btn-sm px-3 ms-2" onclick="showLoginModal()">Login / Sign Up</button>`;
+        }
+    }
+
+    function showLoginModal() {
+        toggleAuthMode('login');
+        new bootstrap.Modal(document.getElementById('loginModal')).show();
+    }
+
+    function toggleAuthMode(mode) {
+        if(mode === 'register') {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('modal-title').innerText = 'Create Account';
+        } else {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('modal-title').innerText = 'Login';
+        }
+    }
+
+    async function performRegister() {
+        const name = document.getElementById('reg-name').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-pass').value;
+
+        if(!name || !email || !password) return alert("Please fill all fields");
+
+        const res = await fetch('/api/register', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ name, email, password })
+        });
+        const data = await res.json();
+        
+        if(data.success) {
+            alert(data.message);
+            toggleAuthMode('login');
+        } else {
+            alert(data.message);
+        }
+    }
+
+    async function performLogin() {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-pass').value;
+
+        const res = await fetch('/api/login', {
+            method: 'POST', headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        
+        if (data.success) {
+            user = data.user;
+            localStorage.setItem('user', JSON.stringify(user));
+            updateAuthUI();
+            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            alert("Welcome, " + user.name + "!");
+        } else {
+            alert(data.message);
+        }
+    }
+
+    function logout() {
+        // 1. User ka data hatayein
+        localStorage.removeItem('user');
+        user = null;
+
+        // 2. 🔥 FIX: Cart ka data bhi hatayein 🔥
+        localStorage.removeItem('cart'); // Browser ki memory saaf
+        cart = []; // Code ka variable saaf
+        
+        // Agar updateCartCount function maujood hai to use chalayein
+        if (typeof updateCartCount === 'function') {
+            updateCartCount();
+        }
+
+        // 3. UI Update aur Reload
+        updateAuthUI();
+        alert("Logged out successfully!");
+        window.location.reload(); // Page refresh
+    }
+
+    // --- 4. PRODUCT LOGIC ---
+    // --- 5. PRODUCTS LOGIC (Updated & Fixed) ---
+    async function fetchProducts() {
+        const fGrid = document.getElementById('home-featured-grid');
+        const sGrid = document.getElementById('shop-grid');
+        
+        // यूजर को बताएं कि हम कोशिश कर रहे हैं
+        if(fGrid) fGrid.innerHTML = '<p class="text-center text-muted">🔄 Refreshing products...</p>';
+        
+        try {
+            const res = await fetch('/api/products');
+            
+            // अगर सर्वर ने मना किया (जैसे 404 या 500 Error)
+            if(!res.ok) {
+                throw new Error(`Server Error: ${res.status}`);
+            }
+
+            products = await res.json();
+            
+            console.log("Products Loaded:", products); // कंसोल में डेटा चेक करें
+            renderProducts();
+
+        } catch(e) { 
+            console.error("Error fetching products:", e);
+            if(fGrid) fGrid.innerHTML = `<p class="text-danger text-center">❌ Products load nahi huye. (Server Check Karein)</p>`;
+        }
+    }
+
+    function renderProducts() {
+        const fGrid = document.getElementById('home-featured-grid');
+        const tGrid = document.getElementById('home-trending-grid');
+        const sGrid = document.getElementById('shop-grid');
+
+        // पहले पुराना कचरा साफ करें
+        if(fGrid) fGrid.innerHTML = ''; 
+        if(tGrid) tGrid.innerHTML = ''; 
+        if(sGrid) sGrid.innerHTML = '';
+
+        if(!Array.isArray(products) || products.length === 0) {
+            if(fGrid) fGrid.innerHTML = '<div class="col-12 text-center p-5"><h4>No products found!</h4><p>Go to Admin Panel to add one.</p></div>';
+            return;
+        }
+
+        products.forEach(p => {
+            // Error Handling: अगर किसी प्रोडक्ट में Image या Name नहीं है, तो उसे छोड़ दो (क्रैश मत हो)
+            if(!p.name || !p.price) return; 
+
+            // Card HTML बनाएं
+            const card = createCard(p);
+
+            // सही सेक्शन में डालें
+            if(sGrid) sGrid.innerHTML += card; // शॉप में सब दिखेंगे
+            
+            // होम पेज पर सिर्फ Featured या New दिखेंगे
+            if(fGrid && (p.type === 'featured' || p.type === 'new')) {
+                fGrid.innerHTML += card;
+            }
+            
+            // Trending सेक्शन
+            if(tGrid && p.type === 'trending') {
+                tGrid.innerHTML += card;
+            }
+        });
+    }
+
+   function createCard(p) {
+        // 1. यह लाइन सबसे ज़रूरी है (ID सही करने के लिए)
+        // MongoDB की ID अक्सर '_id' होती है, 'id' नहीं।
+        const safeId = p._id || p.id; 
+        
+        // 2. इमेज चेक (ताकि खाली डिब्बा न दिखे)
+        const img = p.image || 'https://via.placeholder.com/200';
+
+        // 3. प्राइस सही करना (ताकि NaN न आए)
+        const price = parseFloat(String(p.price).replace(/[^0-9.]/g, '')) || 0;
+
+        return `
+        <div class="col-md-3 col-6 mb-4">
+            <div class="card product-card h-100 shadow-sm border-0" onclick="openProduct('${safeId}')">
+                <div class="badge-overlay"><span class="badge bg-dark">${p.category || 'Item'}</span></div>
+                <img src="${img}" class="card-img-top p-3" style="height:200px; object-fit:contain">
+                <div class="card-body text-center">
+                    <h6 class="card-title text-truncate">${p.name}</h6>
+                    <p class="card-text fw-bold text-primary">₹${price}</p>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    // --- FINAL UPDATED OPEN PRODUCT FUNCTION (With Gallery) ---
+    function openProduct(id) {
+        // 1. प्रोडक्ट ढूंढो
+        currentProduct = products.find(p => (p._id == id || p.id == id));
+        
+        if(currentProduct) {
+            // 2. बड़ी फोटो और टाइटल सेट करें
+            const mainImg = document.getElementById('detail-img');
+            mainImg.src = currentProduct.image || ''; 
+            
+            document.getElementById('detail-title').innerText = currentProduct.name;
+            
+            // 3. प्राइस क्लीन करें
+            let price = parseFloat(String(currentProduct.price).replace(/[^0-9.]/g, '')) || 0;
+            document.getElementById('detail-price').innerText = '₹' + price;
+            document.getElementById('detail-cat').innerText = currentProduct.category || 'Product';
+
+            // --- 👇 NEW: GALLERY LOGIC START 👇 ---
+            const galleryDiv = document.getElementById('gallery-container');
+            
+            // Agar gallery div maujood hai aur product me 1 se zyada photos hain
+            if(galleryDiv && currentProduct.images && currentProduct.images.length > 0) {
+                galleryDiv.innerHTML = currentProduct.images.map(imgSrc => 
+                    `<img src="${imgSrc}" 
+                          class="rounded shadow-sm"
+                          style="width:60px; height:60px; object-fit:cover; margin:5px; cursor:pointer; border:2px solid #fff;" 
+                          onmouseover="this.style.borderColor='#0d6efd'" 
+                          onmouseout="this.style.borderColor='#fff'"
+                          onclick="document.getElementById('detail-img').src='${imgSrc}'">`
+                ).join('');
+            } else if (galleryDiv) {
+                // Agar extra photos nahi hain, to gallery khali rakho
+                galleryDiv.innerHTML = '';
+            }
+    
+
+           // 4. Fabric & Color (Ye same rahega)
+            const fabricEl = document.getElementById('detail-fabric');
+            if(fabricEl) fabricEl.innerText = currentProduct.fabric || 'N/A';
+
+            const colorEl = document.getElementById('detail-color');
+            if(colorEl) colorEl.innerText = currentProduct.color || 'Multicolor';
+
+            // 👇👇 5. NEW SIZE BUTTONS LOGIC (Ye naya hai) 👇👇
+            const sizeContainer = document.getElementById('size-container');
+            const sizeInput = document.getElementById('selected-size-input');
+            
+            // Database se size lo (Example: "S, M, L" ya "Free Size")
+            let sizeString = currentProduct.size || 'Free Size';
+            
+            // Comma se alag karke List banao
+            let sizes = sizeString.split(',').map(s => s.trim()); 
+
+            if(sizeContainer) {
+                sizeContainer.innerHTML = ''; // Purana saaf karo
+                
+                // Default pehla size select karlo
+                if(sizeInput) sizeInput.value = sizes[0]; 
+
+                // Har size ka button banao
+                sizes.forEach((s, index) => {
+                    const btn = document.createElement('button');
+                    btn.innerText = s;
+                    btn.className = 'btn btn-outline-dark btn-sm';
+                    
+                    // Agar pehla hai to 'Active' (Dark) dikhao
+                    if (index === 0) {
+                        btn.classList.remove('btn-outline-dark');
+                        btn.classList.add('btn-dark');
+                    }
+
+                    // Click karne par kya ho
+                    btn.onclick = function() {
+                        // Sabko wapas normal (Outline) karo
+                        document.querySelectorAll('#size-container button').forEach(b => {
+                            b.classList.remove('btn-dark');
+                            b.classList.add('btn-outline-dark');
+                        });
+                        
+                        // Is wale ko Dark (Select) karo
+                        this.classList.remove('btn-outline-dark');
+                        this.classList.add('btn-dark');
+                        
+                        // Input me value set karo
+                        if(sizeInput) sizeInput.value = this.innerText;
+                    };
+
+                    sizeContainer.appendChild(btn);
+                });
+            }
+            // 👆👆 SIZE LOGIC END 👆👆
+
+            // 6. Quantity Reset
+            const qtyInput = document.getElementById('product-qty');
+            if(qtyInput) qtyInput.value = 1;
+
+            // 7. Page Dikhao
+            navTo('product');
+        }
+    }
+
+    function navTo(view) {
+        document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active-view'));
+        const activeView = document.getElementById('view-'+view);
+        if(activeView) {
+            activeView.classList.add('active-view');
+            window.scrollTo(0,0);
+        }
+    }
+
+    // --- 5. CART LOGIC (With NaN Fix) ---
+    
+    // Generic Helper to Clean Price
+    function getCleanPrice(price) {
+        return parseFloat(String(price).replace(/[^0-9.]/g, '')) || 0;
+    }
+
+    function addToCart(id) {
+        const product = products.find(p => p.id == id || p._id == id);
+        if(product) {
+            // Check duplicates
+            const existing = cart.find(item => item.id == id || item._id == id);
+            if(existing) {
+                existing.qty = (existing.qty || 1) + 1;
+            } else {
+                // Ensure price is clean before saving
+                product.price = getCleanPrice(product.price); 
+                product.qty = 1;
+                cart.push(product);
+            }
+            saveCart();
+            alert("Added to Cart!");
+        }
+    }
+
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        // Count update
+        const badge = document.getElementById('cart-badge');
+        if(badge) badge.innerText = cart.length;
+
+        // Container Update
+        const cont = document.getElementById('cart-container');
+        if(!cont) return;
+
+        if(cart.length === 0) { 
+            cont.innerHTML='<p class="text-center">Your cart is empty</p>'; 
+            const totalEl = document.getElementById('cart-total');
+            if(totalEl) totalEl.innerText='₹0'; 
+            return;
+        }
+
+        let total = 0;
+        cont.innerHTML = cart.map((i, index) => { 
+            let p = getCleanPrice(i.price);
+            let qty = i.qty || 1;
+            total += (p * qty); 
+            
+            return `
+            <div class="d-flex justify-content-between mb-2 align-items-center border-bottom pb-2">
+                <div>
+                    <h6 class="mb-0 text-truncate" style="max-width: 150px;">${i.name}</h6>
+                    <small class="text-muted">₹${p} x ${qty}</small>
+                </div>
+                <button class="btn btn-sm text-danger" onclick="removeFromCart(${index})">&times;</button>
+            </div>`; 
+        }).join('');
+
+        const totalEl = document.getElementById('cart-total');
+        if(totalEl) totalEl.innerText = '₹' + total;
+    }
+
+    function removeFromCart(index) { 
+        cart.splice(index, 1); 
+        saveCart(); 
+    }
+
+    // --- 6. CHECKOUT LOGIC (Final Fix) ---
+    function openCheckout() {
+        if(!user) { alert("Please Login first!"); return; }
+        if(cart.length === 0) { alert("Cart is empty!"); return; }
+
+        // Calculate Total
+        const total = cart.reduce((sum, item) => {
+            return sum + (getCleanPrice(item.price) * (item.qty || 1));
+        }, 0);
+
+        // Update Modal UI
+const totalEl = document.getElementById('checkout-total-display'); 
+if(totalEl) totalEl.innerText = '₹' + total;
+        new bootstrap.Modal(document.getElementById('checkoutModal')).show();
+    }
+   // --- SCAN & PAY LOGIC (REAL BUSINESS) ---
+const checkoutForm = document.getElementById('checkoutForm');
+
+if(checkoutForm) {
+    checkoutForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerHTML;
+        
+        // 1. Transaction ID uthana (Sabse Important)
+        const txnIdInput = document.getElementById('txn-id');
+        const txnId = txnIdInput ? txnIdInput.value.trim() : "";
+
+        // Check: Agar Transaction ID nahi dali to roko
+        if(!txnId || txnId.length < 4) {
+            alert("⚠️ Please enter valid Transaction ID / UTR Number!");
+            return;
+        }
+
+        btn.innerHTML = 'Verifying...'; 
+        btn.disabled = true;
+
+        try {
+            // 2. Total Calculate
+            const total = cart.reduce((sum, item) => {
+                return sum + (getCleanPrice(item.price) * (item.qty || 1));
+            }, 0);
+
+            // 3. Customer Data
+            const customerData = {
+                name: document.getElementById('cust-name').value,
+                email: document.getElementById('cust-email').value,
+                phone: document.getElementById('cust-phone').value,
+                address: document.getElementById('cust-address').value,
+                city: document.getElementById('cust-city').value,
+                zip: document.getElementById('cust-zip').value
+            };
+
+            // 4. Order Save (Transaction ID ke sath)
+            const modalEl = document.getElementById('checkoutModal');
+            const modal = bootstrap.Modal.getInstance(modalEl);
+            modal.hide();
+
+            const saveRes = await fetch('/api/orders', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    items: cart,
+                    total: total,
+                    customer: customerData,
+                    // Yahan hum Customer ki likhi hui ID bhej rahe hain
+                    paymentId: "UPI-" + txnId, 
+                    userEmail: (typeof user !== 'undefined' && user) ? user.email : 'guest'
+                })
+            });
+
+            const saveResult = await saveRes.json();
+            
+            if(saveResult.success) {
+                alert("✅ Order Placed Successfully!\nWe will verify your payment (ID: "+txnId+") and ship shortly.");
+                cart = [];
+                saveCart();
+                e.target.reset();
+            } else {
+                alert("❌ Order Failed: " + saveResult.message);
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong!");
+        }
+
+        btn.innerHTML = originalText; 
+        btn.disabled = false;
+    });
+}
+
+   // --- 7. EXTRAS (Search, Contact, Track) ---
+    function doSearch() {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        const f = products.filter(p => p.name.toLowerCase().includes(q));
+        const sGrid = document.getElementById('shop-grid');
+        if(sGrid) {
+            sGrid.innerHTML = f.map(createCard).join('');
+            navTo('shop');
+        }
+    }
+
+    // Contact Form
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('c-name').value,
+                email: document.getElementById('c-email').value,
+                message: document.getElementById('c-msg').value
+            };
+            const res = await fetch('/api/contact', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+            if(result.success) { alert("Message Sent!"); this.reset(); }
+            else { alert("Error sending message."); }
+        });
+    }
+
+    // Track Order
+    async function findMyOrders() {
+        const email = document.getElementById('track-email').value;
+        if(!email) return alert("Enter email!");
+        
+        const listDiv = document.getElementById('my-orders-list');
+        listDiv.innerHTML = 'Loading...';
+        
+        try {
+            const res = await fetch('/api/my-orders/' + email);
+            const orders = await res.json();
+            if(orders.length === 0) { listDiv.innerHTML = 'No orders found.'; return; }
+            
+            listDiv.innerHTML = orders.map(o => `
+                <div class="card mb-2 p-2 border">
+                    <b>#${o.orderId}</b> - ₹${o.total} <br>
+                    Status: <span class="badge bg-info">${o.status}</span>
+                </div>`).join('');
+        } catch(e) { listDiv.innerHTML = 'Error fetching orders'; }
+    }
+    // --- QUANTITY LOGIC START ---
+// --- FINAL LOGIC UPDATES ---
+
+    // 1. QUANTITY CHANGE (+ / -)
+    function changeQty(change) {
+        const qtyInput = document.getElementById('product-qty');
+        if(qtyInput) {
+            let val = parseInt(qtyInput.value) || 1;
+            val += change;
+            if(val < 1) val = 1;
+            qtyInput.value = val;
+        }
+    }
+
+    // 2. ADD TO CART (Universal)
+    // Ye home page aur shop page ke buttons ke liye hai
+    function addToCart(id) {
+        const product = products.find(p => p.id == id || p._id == id);
+        if(!product) return;
+
+        // Check if already exists (Free size default)
+        const existing = cart.find(i => (i.id == id || i._id == id) && i.size == 'Free Size');
+        
+        if(existing) {
+            existing.qty++;
+        } else {
+            cart.push({
+                _id: product._id || product.id,
+                id: product._id || product.id,
+                name: product.name,
+                price: parseFloat(String(product.price).replace(/[^0-9.]/g, '')),
+                image: product.image,
+                size: 'Free Size',
+                qty: 1
+            });
+        }
+        saveCart();
+        alert("Added to Cart!");
+    }
+
+    // 4. SAVE CART (Storage + UI Update)
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartUI();
+    }
+
+    // 5. REMOVE FROM CART (Fixed for Page View)
+    function removeFromCart(index) {
+        cart.splice(index, 1); // Delete item
+        saveCart(); // Update UI
+    }
+
+    // 6. UPDATE CART UI (Badge + Page List)
+    function updateCartUI() {
+        // Badge Count
+        const badge = document.getElementById('cart-badge');
+        if(badge) badge.innerText = cart.length;
+
+        // Cart Page Container
+        const cont = document.getElementById('cart-container');
+        const totalEl = document.getElementById('cart-total');
+        
+        if(!cont) return; // Agar hum cart page par nahi hain to ruk jao
+
+        if(cart.length === 0) { 
+            cont.innerHTML = '<div class="text-center p-5"><i class="fas fa-shopping-basket fa-3x text-muted mb-3"></i><p>Your cart is empty</p><button class="btn btn-primary" onclick="navTo(\'shop\')">Start Shopping</button></div>'; 
+            if(totalEl) totalEl.innerText='₹0'; 
+            return;
+        }
+
+        let total = 0;
+        cont.innerHTML = cart.map((i, index) => { 
+            let p = parseFloat(i.price) || 0;
+            let q = i.qty || 1;
+            total += (p * q); 
+            
+            return `
+            <div class="row mb-3 align-items-center border-bottom pb-3">
+                <div class="col-3 col-md-2">
+                    <img src="${i.image}" class="img-fluid rounded">
+                </div>
+                <div class="col-7 col-md-8">
+                    <h6 class="mb-1">${i.name}</h6>
+                    <small class="text-muted">Size: ${i.size}</small><br>
+                    <span class="fw-bold text-primary">₹${p} x ${q}</span>
+                </div>
+                <div class="col-2 col-md-2 text-end">
+                    <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>`; 
+        }).join('');
+
+        if(totalEl) totalEl.innerText = '₹' + total;
+    }
+
+    // 7. CHECKOUT MODAL TOTAL FIX
+    const checkoutModalEl = document.getElementById('checkoutModal');
+    if (checkoutModalEl) {
+        checkoutModalEl.addEventListener('show.bs.modal', function () {
+            const total = cart.reduce((sum, item) => sum + ((parseFloat(item.price)||0) * (item.qty||1)), 0);
+            const displayEl = document.getElementById('checkout-total-display');
+            if(displayEl) displayEl.innerText = "₹" + total; 
+        });
+    }
+    // ✅ यह नया कोड पेस्ट करें (सबसे नीचे)
+    window.addToCartCurrent = function() {
+        // 1. चेक करें कि प्रोडक्ट है या नहीं
+        if (!currentProduct) return;
+
+        // 2. चुना हुआ Size उठाएं
+        const sizeInput = document.getElementById('selected-size-input');
+        // अगर बटन से साइज़ चुना है तो वो लो, नहीं तो डिफ़ॉल्ट 'Free Size'
+        let finalSize = (sizeInput && sizeInput.value) ? sizeInput.value : (currentProduct.size || 'Free Size');
+
+        // 3. Quantity उठाएं
+        const qtyInput = document.getElementById('product-qty');
+        let finalQty = qtyInput ? parseInt(qtyInput.value) : 1;
+
+        // 4. चेक करें: क्या यह आइटम पहले से कार्ट में है?
+        const existingItem = cart.find(item => 
+            (item.id == currentProduct._id || item._id == currentProduct._id) && 
+            item.size == finalSize 
+        );
+
+        if (existingItem) {
+            // अगर है, तो बस क्वांटिटी बढ़ा दो
+            existingItem.qty += finalQty;
+        } else {
+            // अगर नहीं है, तो कार्ट में नया आइटम डालो
+            cart.push({
+                _id: currentProduct._id || currentProduct.id,
+                id: currentProduct._id || currentProduct.id,
+                name: currentProduct.name,
+                price: parseFloat(String(currentProduct.price).replace(/[^0-9.]/g, '')), // प्राइस सही करो
+                image: currentProduct.image,
+                size: finalSize, // ✅ साइज़ यहाँ सेव हो रहा है
+                qty: finalQty    // ✅ क्वांटिटी यहाँ सेव हो रही है
+            });
+        }
+
+        // 5. सेव करें और बताएं
+        saveCart();
+        alert(`Added to Cart!\nSize: ${finalSize}\nQty: ${finalQty}`);
+    };
+// --- QUANTITY LOGIC END ---
+
+    // Force Navigation Function
+    window.navTo = function(viewName) {
+        console.log("Navigating to:", viewName);
+
+        // 1. Sabhi sections ko hide karo
+        const sections = document.querySelectorAll('.view-section');
+        sections.forEach(section => {
+            section.classList.remove('active-view');
+            section.style.display = 'none';
+        });
+
+        // 2. Target section ko dhoondo
+        const target = document.getElementById('view-' + viewName);
+        if (target) {
+            target.classList.add('active-view');
+            target.style.display = 'block';
+            window.scrollTo(0, 0);
+            
+            // 3. Agar cart hai to UI refresh karo
+            if(viewName === 'cart' && typeof updateCartUI === 'function') {
+                updateCartUI();
+            }
+        } else {
+            console.error("Target view not found: view-" + viewName);
+        }
+    };
+</script>
+<script>
+    console.log("Repair Script Loaded 🚀");
+
+    // 1. Navigation Fix (ताकि Cart खुले)
+    window.navTo = function(viewName) {
+        console.log("Going to:", viewName);
+        
+        // सारे पेज छुपाएं
+        var sections = document.querySelectorAll('.view-section');
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].style.display = 'none';
+            sections[i].classList.remove('active-view');
+        }
+
+        // जो चाहिए उसे दिखाएं
+        var target = document.getElementById('view-' + viewName);
+        if (target) {
+            target.style.display = 'block';
+            target.classList.add('active-view');
+            window.scrollTo(0, 0);
+            
+            // अगर Cart है तो अपडेट करें
+            if(viewName === 'cart' && typeof updateCartUI === 'function') {
+                updateCartUI();
+            }
+        }
+    };
+
+    // 2. Add to Cart Fix (Size और Qty के साथ)
+    window.addToCartCurrent = function() {
+        if (!currentProduct) return;
+
+        // Size उठाओ
+        var sizeInput = document.getElementById('selected-size-input');
+        var finalSize = (sizeInput && sizeInput.value) ? sizeInput.value : (currentProduct.size || 'Free Size');
+        
+        // Qty उठाओ
+        var qtyInput = document.getElementById('product-qty');
+        var finalQty = qtyInput ? parseInt(qtyInput.value) : 1;
+
+        // चेक करो कार्ट में पहले से है क्या
+        var existingItem = cart.find(function(item) {
+            return (item.id == currentProduct._id || item._id == currentProduct._id) && item.size == finalSize;
+        });
+
+        if (existingItem) {
+            existingItem.qty += finalQty;
+        } else {
+            cart.push({
+                _id: currentProduct._id || currentProduct.id,
+                id: currentProduct._id || currentProduct.id,
+                name: currentProduct.name,
+                price: parseFloat(String(currentProduct.price).replace(/[^0-9.]/g, '')),
+                image: currentProduct.image,
+                size: finalSize,
+                qty: finalQty
+            });
+        }
+        
+        // सेव करें
+        localStorage.setItem('cart', JSON.stringify(cart));
+        if(typeof updateCartUI === 'function') updateCartUI();
+        
+        alert("Added to Cart!\nSize: " + finalSize);
+    };
+
+    // 3. Product Open Fix (बटन्स के लिए)
+    var originalOpenProduct = window.openProduct; // पुराना बैकअप
+    
+    // 👇👇 नया और सही openProduct फंक्शन (यहाँ पेस्ट करें) 👇👇
+    window.openProduct = function(id) {
+        // 1. प्रोडक्ट ढूंढो
+        currentProduct = products.find(p => (p._id == id || p.id == id));
+        if(!currentProduct) return;
+
+        // 2. फोटो और टाइटल सेट करें 
+        document.getElementById('detail-img').src = currentProduct.image || '';
+        document.getElementById('detail-title').innerText = currentProduct.name;
+        
+        // प्राइस ठीक करें
+        let price = parseFloat(String(currentProduct.price).replace(/[^0-9.]/g, '')) || 0;
+        document.getElementById('detail-price').innerText = '₹' + price;
+        document.getElementById('detail-cat').innerText = currentProduct.category || 'Product';
+
+        // ✅ 3. FABRIC और COLOR अपडेट करें (यह लाइनें जरूरी हैं)
+        const fabricEl = document.getElementById('detail-fabric');
+        if(fabricEl) {
+            fabricEl.innerText = currentProduct.fabric || 'N/A'; // अगर खाली है तो N/A
+        }
+
+        const colorEl = document.getElementById('detail-color');
+        if(colorEl) {
+            colorEl.innerText = currentProduct.color || 'Multicolor'; // अगर खाली है तो Multicolor
+        }
+
+        // 4. SIZE बटन्स बनाना
+        // 👇👇 NEW SIZE LOGIC (Price changing magic) 👇👇
+        const sizeContainer = document.getElementById('size-container');
+        const sizeInput = document.getElementById('selected-size-input');
+        const priceTag = document.getElementById('detail-price'); // प्राइस टैग
+        
+        if(sizeContainer) {
+            sizeContainer.innerHTML = ''; 
+            
+            let sizeData = [];
+            // चेक करें कि डेटा नया (JSON) है या पुराना (Text)
+            try {
+                // अगर नया सिस्टम है (JSON)
+                sizeData = JSON.parse(currentProduct.size);
+            } catch (e) {
+                // अगर पुराना सिस्टम है (Simple Text: S, M, L)
+                let sList = (currentProduct.size || 'Free Size').split(',');
+                sizeData = sList.map(s => ({ name: s.trim(), price: currentProduct.price })); 
+            }
+
+            // पहला साइज़ सेलेक्ट करें
+            if(sizeData.length > 0) {
+                sizeInput.value = sizeData[0].name;
+                priceTag.innerText = '₹' + sizeData[0].price; // प्राइस अपडेट
+            }
+
+            sizeData.forEach((item, index) => {
+                const btn = document.createElement('button');
+                btn.innerText = item.name;
+                btn.className = (index === 0) ? 'btn btn-dark btn-sm' : 'btn btn-outline-dark btn-sm';
+                
+                // 👇 जादू यहाँ है: क्लिक करने पर प्राइस बदलेगा 👇
+                btn.onclick = function() {
+                    // 1. बटन स्टाइल बदलें
+                    document.querySelectorAll('#size-container button').forEach(b => {
+                        b.classList.remove('btn-dark');
+                        b.classList.add('btn-outline-dark');
+                    });
+                    this.classList.remove('btn-outline-dark');
+                    this.classList.add('btn-dark');
+                    
+                    // 2. फॉर्म में साइज़ सेव करें
+                    if(sizeInput) sizeInput.value = item.name;
+
+                    // 3. ✅ प्राइस अपडेट करें!
+                    priceTag.innerText = '₹' + item.price;
+                };
+                sizeContainer.appendChild(btn);
+            });
+        }
+       // 👇👇 EXTRA DETAIL LOGIC (New Style) 👇👇
+       // 👇 इसे openProduct में पेस्ट करें
+const extraContainer = document.getElementById('extra-detail-container');
+const extraText = document.getElementById('detail-extra');
+
+if (currentProduct.extraDetail && currentProduct.extraDetail.trim() !== "") {
+    extraText.innerText = currentProduct.extraDetail;
+    extraContainer.style.display = 'block'; // अब दिखेगा
+} else {
+    extraContainer.style.display = 'none';
+}
+// 👇👇 GALLERY CODE 👇👇
+    // ⭐⭐⭐👇👇 MULTIPLE IMAGE GALLERY LOGIC 👇👇⭐⭐⭐
+    // 👇 यहाँ मैंने 'gallery-container' कर दिया है!
+    const galleryBox = document.getElementById('gallery-container'); 
+    
+    if (galleryBox) {
+        galleryBox.innerHTML = ''; // पुराना साफ करो
+
+        // अगर images की लिस्ट है तो वो लो, नहीं तो main image लो
+        let imagesList = [];
+        if (currentProduct.images && currentProduct.images.length > 0) {
+            imagesList = currentProduct.images;
+        } else {
+            imagesList = [currentProduct.image];
+        }
+
+        imagesList.forEach(imgUrl => {
+            const thumb = document.createElement('img');
+            thumb.src = imgUrl;
+            thumb.className = 'border rounded p-1 mx-1 mt-2';
+            thumb.style.width = '60px';
+            thumb.style.height = '60px';
+            thumb.style.objectFit = 'cover';
+            thumb.style.cursor = 'pointer';
+            
+            // क्लिक करने पर बड़ी फोटो बदलो
+            thumb.onclick = function() {
+                document.getElementById('detail-img').src = imgUrl;
+                
+                // थोड़ा सा हाईलाइट करें (यहाँ भी नाम बदल दिया है)
+                document.querySelectorAll('#gallery-container img').forEach(i => i.style.borderColor = '#dee2e6');
+                this.style.borderColor = '#000';
+            };
+            galleryBox.appendChild(thumb);
+        });
+    }
+    // ⭐⭐⭐👆👆 GALLERY LOGIC END 👆👆⭐⭐⭐
+        // 5. Quantity को 1 पर लाएं
+        const qtyInput = document.getElementById('product-qty');
+        if(qtyInput) qtyInput.value = 1;
+
+        // 6. पेज खोलें
+        navTo('product');
+    };
+</script>
+
+       <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,151 @@
+ :root { --primary: #0d6efd; --dark: #212529; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; padding-top: 76px; display: flex; flex-direction: column; min-height: 100vh;}
+        .navbar { box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .navbar a:hover{ color: var(--primary)}
+        footer { background-color: #1a1a1a; color: #bbb; padding-top: 60px; margin-top: auto; }
+        footer a { color: #bbb; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.3s; }
+        footer a:hover { color: var(--primary); }
+        /* --- SOCIAL ICONS FIX*/
+.social-icons {
+    display: flex;           /* आइकन्स को एक लाइन (Row) में लाने के लिए */
+    gap: 15px;               /* उनके बीच में गैप देने के लिए */
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: #bbb;             /* आइकन्स का रंग (Grey) */
+    font-size: 20px;         /* साइज़ थोड़ा बड़ा किया */
+    text-decoration: none;   /* अंडरलाइन हटाई */
+    transition: 0.3s;
+    display: flex;           /* Icon को सेंटर करने के लिए */
+    align-items: center;
+    justify-content: center;
+    width: 40px;             /* गोल घेरा बनाने के लिए */
+    height: 40px;
+    background: rgba(255,255,255,0.1); /* हल्का बैकग्राउंड */
+    border-radius: 50%;      /* गोल (Circle) शेप */
+}
+
+.social-icons a:hover {
+    color: white;            /* होवर पर सफ़ेद रंग */
+    background: #0d6efd;     /* होवर पर नीला बैकग्राउंड */
+    transform: translateY(-3px); /* थोड़ा ऊपर उठने का इफेक्ट */
+}
+        .product-card { transition: 0.3s; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .badge-overlay { position: absolute; top: 10px; left: 10px; }
+        .view-section { display: none; animation: fadeIn 0.4s; }
+        .active-view { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- NEW DESIGN UPGRADES --- */
+        
+        /* 1. Top Black Bar */
+        .announcement-bar {
+            background: #111; color: white; text-align: center;
+            font-size: 13px; padding: 8px 0; letter-spacing: 1px; font-weight: 500;
+        }
+
+        /* 2. Hero Slider */
+        .carousel-item {
+            height: 450px;
+            background-position: center; background-size: cover; position: relative;
+        }
+        .carousel-overlay {
+            background: rgba(0,0,0,0.4); /* Dark Overlay */
+            position: absolute; top:0; left:0; right:0; bottom:0;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+
+        /* 3. Circular Categories */
+        .category-scroll {
+            display: flex; gap: 25px; overflow-x: auto; padding: 20px 0;
+            scrollbar-width: none; /* Hide scrollbar */
+            justify-content: center;
+        }
+        .category-item { text-align: center; cursor: pointer; min-width: 80px; }
+        .category-img {
+            width: 75px; height: 75px; border-radius: 50%; object-fit: cover;
+            border: 2px solid #eee; padding: 2px; transition: 0.3s;
+        }
+        .category-item:hover .category-img { transform: scale(1.1); border-color: var(--primary); }
+        .category-name { font-size: 12px; font-weight: 600; margin-top: 8px; color: #333; }
+
+    /* Default: Sabhi sections ko chupa do */
+    .view-section {
+        display: none;
+    }
+
+    /* Sirf Active section ko dikhao */
+    /* 👇 Yahan !important lagana zaruri hai 👇 */
+    /* Sirf Active section ko dikhao */
+.active-view {
+    display: block !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* 👇 Footer Links Design 👇 */
+.footer-link {
+    display: block;             /* एक के नीचे एक आएंगे */
+    margin-bottom: 8px;         /* थोड़ी जगह नीचे */
+    text-decoration: none;      /* नीचे की लाइन हटाओ */
+    color: #bbbbbb;             /* डिफ़ॉल्ट ग्रे कलर */
+    transition: color 0.3s ease; /* समूथ इफेक्ट */
+}
+
+/* 👇 Hover Effect (जब माउस ऊपर जाएगा) 👇 */
+.footer-link:hover {
+    color: #0d6efd; /* बूटस्ट्रैप वाला नीला रंग */
+}
+/* =========================================
+   🌟 DEV STORE THEME COLORS (HOT PINK)
+   ========================================= */
+
+/* 1. जहाँ-जहाँ नीला टेक्स्ट (text-primary) है, उसे बदलें */
+.text-primary { 
+    color: #F527B7 !important; 
+}
+
+/* 2. जहाँ-जहाँ नीला बैकग्राउंड (bg-primary) है, उसे बदलें */
+.bg-primary { 
+    background-color: #F527B7 !important; 
+}
+
+/* 3. सारे बटन्स (btn-primary) का रंग बदलें */
+.btn-primary { 
+    background-color: #F527B7 !important; 
+    border-color: #F527B7 !important; 
+    color: white !important;
+}
+
+/* 4. जब बटन पर माउस जाए (Hover Effect - डार्क शेड) */
+.btn-primary:hover { 
+    background-color: #D1199A !important; /* Hover के लिए थोड़ा डार्क शेड */
+    border-color: #D1199A !important; 
+}
+
+/* 5. Footer के लिंक्स पर माउस जाने पर भी यही रंग आए */
+.footer-link:hover, footer a:hover {
+    color: #F527B7 !important;
+}
+/* =========================================
+   🛒 CART ICON & BADGE COLOR (HOT PINK)
+   ========================================= */
+
+/* 1. कार्ट के आइकॉन (Bag/Cart) का रंग बदलें */
+.fa-shopping-bag, 
+.fa-shopping-cart,
+.nav-link i.fa-shopping-bag {
+    color: #F527B7 !important;
+}
+
+/* 2. कार्ट के ऊपर जो गोल नंबर (Badge) आता है, उसका बैकग्राउंड रंग बदलें */
+.badge {
+    background-color: #F527B7 !important;
+}

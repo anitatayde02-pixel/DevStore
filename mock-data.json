@@ -1,0 +1,58 @@
+[
+  {
+    "id": 2,
+    "name": "Smart Watch Series 7",
+    "price": 399,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    "rating": 5,
+    "desc": "Stay connected with style."
+  },
+  {
+    "id": 3,
+    "name": "Designer Denim Jacket",
+    "price": 89.5,
+    "category": "Fashion",
+    "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500",
+    "rating": 4,
+    "desc": "Classic denim for casual look."
+  },
+  {
+    "name": "headphones",
+    "price": 150,
+    "image": "https://via.placeholder.com/500",
+    "category": "New",
+    "id": 1765567979463
+  },
+  {
+    "id": 1765620003662,
+    "name": "headphones",
+    "price": 50,
+    "image": "https://via.placeholder.com/500",
+    "category": "Electronics",
+    "desc": "New Item"
+  },
+  {
+    "id": 1765622179392,
+    "name": "headphones",
+    "price": 50,
+    "image": "https://via.placeholder.com/500",
+    "category": "Electronics",
+    "desc": "New Item"
+  },
+  {
+    "name": "iqoo mobile phone",
+    "price": 50000,
+    "category": "Electronics",
+    "image": "/images/1766229812261-iqoo.jpg",
+    "id": 1766229812311
+  },
+  {
+    "name": "honor ",
+    "price": 20000,
+    "category": "General",
+    "image": "/images/1766316900918-honor.jpg",
+    "supplierLink": "",
+    "id": 1766316900935
+  }
+]

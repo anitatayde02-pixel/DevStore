@@ -1,0 +1,163 @@
+[
+  {
+    "cart": [
+      {
+        "id": 1,
+        "name": "Premium Wireless Headphones",
+        "price": 199.99,
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+        "rating": 4.5,
+        "desc": "Noise cancelling...",
+        "qty": 1
+      }
+    ],
+    "total": 199.99,
+    "date": "12/12/2025, 16:18:55",
+    "orderId": "ORD-1765536535262"
+  },
+  {
+    "cart": [
+      {
+        "id": 3,
+        "name": "Designer Denim Jacket",
+        "price": 89.5,
+        "category": "Fashion",
+        "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500",
+        "rating": 4,
+        "desc": "Classic style...",
+        "qty": 1
+      }
+    ],
+    "total": 89.5,
+    "date": "12/12/2025, 16:45:03",
+    "orderId": "ORD-1765538103675"
+  },
+  {
+    "cart": [
+      {
+        "id": 3,
+        "name": "Designer Denim Jacket",
+        "price": 89.5,
+        "category": "Fashion",
+        "image": "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=500",
+        "rating": 4,
+        "desc": "Classic denim for casual look.",
+        "qty": 1
+      }
+    ],
+    "total": 89.5,
+    "date": "12/12/2025, 17:07:04",
+    "orderId": "ORD-1765539424472"
+  },
+  {
+    "item": "Premium Wireless Headphones",
+    "amount": 199.99,
+    "orderId": "ORD-1765625425147",
+    "date": "13/12/2025",
+    "status": "Pending",
+    "total": 199.99
+  },
+  {
+    "cart": [
+      {
+        "id": 1,
+        "name": "Premium Wireless Headphones",
+        "price": 199.99,
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+        "rating": 4.5,
+        "desc": "High quality noise cancelling headphones.",
+        "qty": 1
+      }
+    ],
+    "total": 0,
+    "orderId": "ORD-1765625508595",
+    "date": "13/12/2025",
+    "status": "Pending"
+  },
+  {
+    "item": "Premium Wireless Headphones",
+    "amount": 199.99,
+    "orderId": "ORD-1765625532732",
+    "date": "13/12/2025",
+    "status": "Pending",
+    "total": 199.99
+  },
+  {
+    "item": "Premium Wireless Headphones",
+    "amount": 199.99,
+    "orderId": "ORD-1765625615511",
+    "date": "13/12/2025",
+    "status": "Pending",
+    "total": 199.99
+  },
+  {
+    "cart": [
+      {
+        "id": 1,
+        "name": "Premium Wireless Headphones",
+        "price": 199.99,
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+        "rating": 4.5,
+        "desc": "High quality noise cancelling headphones.",
+        "qty": 1
+      }
+    ],
+    "total": 0,
+    "orderId": "ORD-1765625629521",
+    "date": "13/12/2025",
+    "status": "Pending"
+  },
+  {
+    "item": "Smart Watch Series 7",
+    "amount": 399,
+    "orderId": "ORD-1765625697188",
+    "date": "13/12/2025",
+    "status": "Pending",
+    "total": 399
+  },
+  {
+    "item": "Smart Watch Series 7",
+    "amount": 399,
+    "orderId": "ORD-1765625729955",
+    "date": "13/12/2025",
+    "status": "Pending",
+    "total": 399
+  },
+  {
+    "item": "Premium Wireless Headphones",
+    "amount": 199.99,
+    "orderId": "ORD-1765823855537",
+    "date": "16/12/2025",
+    "status": "Pending",
+    "total": 199.99
+  },
+  {
+    "item": "headphones",
+    "amount": 100,
+    "total": 100,
+    "orderId": "ORD-1766315655935",
+    "date": "21/12/2025",
+    "status": "Pending"
+  },
+  {
+    "cart": [
+      {
+        "id": 2,
+        "name": "Smart Watch Series 7",
+        "price": 399,
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+        "rating": 5,
+        "desc": "Stay connected with style.",
+        "qty": 1
+      }
+    ],
+    "total": 399,
+    "orderId": "ORD-1766316065078",
+    "date": "21/12/2025",
+    "status": "Pending"
+  }
+]

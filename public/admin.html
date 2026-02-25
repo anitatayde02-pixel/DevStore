@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropship Admin Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: sans-serif; }
+        .sidebar { min-height: 100vh; background: #1a202c; color: white; }
+        .nav-link { color: #a0aec0; padding: 12px; margin-bottom: 5px; border-radius: 5px; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { background: #2d3748; color: white; }
+        .profit-card { border-left: 5px solid #48bb78; }
+        .supplier-link { color: #3182ce; text-decoration: none; font-weight: bold; }
+        .supplier-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar p-3">
+            <h4 class="mb-4 text-center"><i class="fas fa-parachute-box"></i> DropMaster</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('products')"><i class="fas fa-box"></i> My Products</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('orders')"><i class="fas fa-shipping-fast"></i> Fulfillment</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="showSection('messages')"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li class="nav-item mt-5"><a class="nav-link text-danger" href="/">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-10 p-4">
+            
+            <div id="sec-dashboard">
+                <h3>Dropshipping Overview</h3>
+                <div class="row g-3 mt-3">
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0">
+                            <small class="text-muted">Total Sales</small>
+                            <h3 id="stat-sales">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0">
+                            <small class="text-muted">Supplier Cost</small>
+                            <h3 id="stat-cost" class="text-danger">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0 profit-card">
+                            <small class="text-muted">Net Profit</small>
+                            <h3 id="stat-profit" class="text-success">₹0</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 shadow-sm border-0">
+                            <small class="text-muted">Pending Orders</small>
+                            <h3 id="stat-orders">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sec-products" style="display:none;">
+                <div class="d-flex justify-content-between mb-4">
+                    <h3>Product Catalog</h3>
+                    <button class="btn btn-primary" onclick="openAddModal()" data-bs-toggle="modal" data-bs-target="#addModal">
+    <i class="fas fa-plus"></i> Import Product
+</button>
+                </div>
+                <div class="card p-3 border-0 shadow-sm">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Img</th>
+                                <th>Product Name</th>
+                                <th>Sup. Cost</th>
+                                <th>Sell Price</th>
+                                <th>Margin</th>
+                                <th>Link</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prodTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sec-orders" style="display:none;">
+                <h3>Order Fulfillment</h3>
+                <div class="card p-3 border-0 shadow-sm">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Items</th>
+                                <th>Customer Info</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="sec-messages" style="display:none;">
+                <h3>📩 Customer Inquiries</h3>
+                <div id="msg-list" class="row mt-3">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h5>Add Dropshipping Product</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <form id="addForm">
+                    <div class="mb-2">
+                        <label>Product Name</label>
+                        <input id="p-name" class="form-control" required>
+                    </div>
+                    <div class="row mb-2">
+    <div class="col-6">
+        <label>Supplier Cost (₹)</label>
+        <input type="number" id="supplier-price" class="form-control" required>
+    </div>
+    <div class="col-6">
+        <label>Selling Price (₹)</label>
+        <input type="number" id="selling-price" class="form-control" required>
+    </div>
+</div>
+                    <div class="mb-2">
+                        <label>Supplier Link</label>
+                        <input id="p-link" class="form-control" required>
+                    </div>
+                    <div class="mb-2">
+                        <label>Image</label>
+                        <input type="file" id="p-images" class="form-control" multiple required>
+                    </div>
+                    <div class="row mb-2">
+                         <div class="col-6">
+                            <label>Category</label>
+                            <select id="p-cat" class="form-select">
+                                <option>Electronics</option><option>Fashion</option><option>Home</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label>Type</label>
+                            <select id="p-type" class="form-select">
+                                <option value="new">New</option><option value="featured">Featured</option><option value="trending">Trending</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+    <div class="col-4">
+        <label class="form-label">Fabric</label>
+        <input type="text" id="p-fabric" class="form-control" placeholder="Ex: Silk, Cotton">
+    </div>
+    <div class="col-4">
+        <label class="form-label">Color</label>
+        <input type="text" id="p-color" class="form-control" placeholder="Ex: Red, Blue">
+    </div>
+    <div class="col-12 mt-3"> <div class="p-3 border rounded bg-light">
+        <label class="form-label fw-bold text-primary">Manage Sizes & Prices</label>
+        
+        <div class="input-group mb-2">
+            <span class="input-group-text">Size</span>
+            <input type="text" id="size-name" class="form-control" placeholder="Ex: XL">
+            
+            <span class="input-group-text">₹ Price</span>
+            <input type="number" id="size-price" class="form-control" placeholder="Ex: 699">
+            
+            <button type="button" class="btn btn-dark" onclick="addSizeVariant()">
+                <i class="fas fa-plus"></i> Add
+            </button>
+        </div>
+
+        <ul id="size-list" class="list-group list-group-flush small bg-white border rounded"></ul>
+
+        <input type="hidden" id="final-size-data"> 
+    </div>
+</div>
+<div class="mb-3">
+    <label class="form-label text-primary">Extra Detail (Optional)</label>
+    <input type="text" id="p-extra" class="form-control" placeholder="Ex: With Blouse Piece (Leave empty for Kurti)">
+</div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success w-100" onclick="addProduct()">Save to Store</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // --- 1. NAVIGATION ---
+    function showSection(id) {
+        document.querySelectorAll('[id^="sec-"]').forEach(el => el.style.display = 'none');
+        document.getElementById('sec-' + id).style.display = 'block';
+        
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        if(event && event.target) event.target.classList.add('active');
+
+        if(id === 'dashboard') loadStats();
+        if(id === 'products') loadProducts();
+        if(id === 'orders') loadOrders();
+        if(id === 'messages') loadMessages();
+    }
+
+    // --- 2. ADD PRODUCT (FIXED FOR NEW SERVER) ---
+    // --- UPDATED ADD PRODUCT FUNCTION (Multiple Images) ---
+    // 👇👇 FINAL FIXED ADD PRODUCT FUNCTION 👇👇
+    // 👇👇 FINAL CORRECT ADD PRODUCT FUNCTION (Multi-Image Fix) 👇👇
+    async function addProduct() {
+        const btn = document.querySelector('#addModal button.btn-success');
+        const originalText = btn.innerText;
+        
+        // बटन को लोडिंग करें
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+        btn.disabled = true;
+
+        try {
+            const formData = new FormData();
+
+            // 1. HTML Element ढूंढो
+            const fileInput = document.getElementById('p-images');
+            const name = document.getElementById('p-name').value;
+            
+            // 👇 IDs ध्यान से चेक करें (HTML में यही होने चाहिए)
+            const price = document.getElementById('selling-price').value;     
+            const supplierPrice = document.getElementById('supplier-price').value;
+            
+            // 2. चेक करें कि फाइल चुनी है या नहीं
+            if (fileInput.files.length === 0) {
+                throw new Error("Kam se kam 1 photo select karein!");
+            }
+
+            // ⭐ 3. जादू यहाँ है: LOOP (सारी फोटो एक-एक करके जोड़ो) ⭐
+            for (let i = 0; i < fileInput.files.length; i++) {
+                // 'images' वही नाम है जो server.js में upload.array('images') में है
+                formData.append('images', fileInput.files[i]); 
+            }
+
+            // 4. बाकी जानकारी जोड़ो
+            formData.append('name', name);
+            formData.append('price', price);
+            formData.append('supplierPrice', supplierPrice);
+            formData.append('link', document.getElementById('p-link').value);
+            formData.append('category', document.getElementById('p-cat').value);
+            formData.append('type', document.getElementById('p-type').value);
+            
+            // Extra Details
+            formData.append('fabric', document.getElementById('p-fabric').value || 'N/A');
+            formData.append('color', document.getElementById('p-color').value || 'Multicolor');
+            formData.append('extraDetail', document.getElementById('p-extra').value || '');
+
+            // Size Logic
+            const manualSize = document.getElementById('final-size-data').value;
+            if (manualSize && manualSize !== "[]" && manualSize !== "") {
+                formData.append('size', manualSize);
+            } else {
+                formData.append('size', JSON.stringify([{ name: 'Free Size', price: price }]));
+            }
+
+           // 5. सर्वर को भेजो (Add या Edit)
+            let apiUrl = '/api/products';
+            let apiMethod = 'POST'; // नया ऐड करने के लिए
+
+            // अगर Edit हो रहा है तो URL और Method बदल दो
+            if (editingProductId) {
+                apiUrl = '/api/products/' + editingProductId;
+                apiMethod = 'PUT'; // अपडेट करने के लिए
+            }
+
+            const res = await fetch(apiUrl, {
+                method: apiMethod,
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("✅ Product Added with Multiple Images!");
+                location.reload();
+            } else {
+                throw new Error(data.message);
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("❌ Error: " + err.message);
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    }
+    // --- 3. DELETE PRODUCT ---
+    async function deleteProduct(id) {
+        if(!confirm("Are you sure you want to delete this product?")) return;
+        try {
+            const res = await fetch('/api/products/' + id, { method: 'DELETE' });
+            const data = await res.json();
+            if(data.success) {
+                loadProducts(); // Table refresh
+            } else {
+                alert("Could not delete.");
+            }
+        } catch(err) { console.error(err); }
+    }
+
+    // --- 4. LOAD PRODUCTS ---
+   // --- 4. LOAD PRODUCTS (Edit Button Added) ---
+    window.allProductsList = []; // एडिट करने के लिए डेटा सेव रखेंगे
+
+    async function loadProducts() {
+        const res = await fetch('/api/products');
+        const products = await res.json();
+        window.allProductsList = products; // डेटा को याद रखो
+        
+        const tbody = document.getElementById('prodTable');
+        
+        if(products.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="text-center p-3">No products found. Add one!</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = products.map(p => `
+            <tr>
+                <td><img src="${p.image}" style="width:50px; height:50px; object-fit:cover; border-radius:5px;"></td>
+                <td>${p.name}</td>
+                <td>₹${p.supplierPrice || 0}</td>
+                <td>₹${p.price}</td>
+                <td><span class="badge bg-success">+₹${p.price - (p.supplierPrice || 0)}</span></td>
+                <td><a href="${p.link || '#'}" target="_blank" class="btn btn-sm btn-light"><i class="fas fa-link"></i></a></td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary" onclick="openEditModal('${p._id}')"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="deleteProduct('${p._id}')"><i class="fas fa-trash"></i></button>
+                </td>
+            </tr>
+        `).join('');
+    }
+
+    // 👇👇 EDIT PRODUCT LOGIC 👇👇
+    let editingProductId = null; // यह याद रखेगा कि नया प्रोडक्ट है या एडिट हो रहा है
+
+    // नया प्रोडक्ट ऐड करने के लिए फॉर्म खाली करना
+    function openAddModal() {
+        editingProductId = null;
+        document.getElementById('addForm').reset();
+        document.querySelector('#addModal h5').innerText = "Add Dropshipping Product";
+        document.querySelector('#addModal button.btn-success').innerText = "Save to Store";
+        sizeVariants = []; 
+        renderSizeList();
+    }
+
+    // एडिट करने के लिए फॉर्म में पुराना डेटा भरना
+    function openEditModal(id) {
+        editingProductId = id; // ID सेव कर ली
+        const prod = window.allProductsList.find(p => p._id === id);
+        if(!prod) return;
+
+        // फॉर्म में डेटा भरें
+        document.getElementById('p-name').value = prod.name || '';
+        document.getElementById('supplier-price').value = prod.supplierPrice || '';
+        document.getElementById('selling-price').value = prod.price || '';
+        document.getElementById('p-link').value = prod.link || '';
+        document.getElementById('p-cat').value = prod.category || 'Fashion';
+        document.getElementById('p-type').value = prod.type || 'new';
+        document.getElementById('p-fabric').value = prod.fabric || '';
+        document.getElementById('p-color').value = prod.color || '';
+        document.getElementById('p-extra').value = prod.extraDetail || '';
+
+        // Size Data भरें
+        try {
+            sizeVariants = JSON.parse(prod.size);
+            if (!Array.isArray(sizeVariants)) sizeVariants = [];
+        } catch(e) {
+            sizeVariants = [];
+        }
+        renderSizeList();
+
+        // Modal का टाइटल बदलें
+        document.querySelector('#addModal h5').innerText = "✏️ Edit Product";
+        document.querySelector('#addModal button.btn-success').innerText = "Update Product";
+
+        // Modal खोलें (Bootstrap का तरीका)
+        var myModal = new bootstrap.Modal(document.getElementById('addModal'));
+        myModal.show();
+    }
+    // --- 5. DASHBOARD STATS ---
+    async function loadStats() {
+        const [pRes, oRes] = await Promise.all([fetch('/api/products'), fetch('/api/admin/orders')]);
+        const products = await pRes.json();
+        const orders = await oRes.json();
+
+        let totalSales = 0;
+        let totalCost = 0;
+
+        orders.forEach(order => {
+            totalSales += (order.total || 0);
+            
+            // Har item ki cost calculate karna
+            if(order.cart) {
+                order.cart.forEach(item => {
+                    // Product list me dhundo ki iski asli kharid rate kya thi
+                    const prod = products.find(p => p.name === item.name);
+                    const cost = prod ? (prod.supplierPrice || 0) : (item.price * 0.7); // Agar na mile to 70% maan lo
+                    totalCost += (cost * (item.qty || 1));
+                });
+            }
+        });
+
+        document.getElementById('stat-sales').innerText = '₹' + totalSales;
+        document.getElementById('stat-cost').innerText = '₹' + totalCost;
+        document.getElementById('stat-profit').innerText = '₹' + (totalSales - totalCost);
+        document.getElementById('stat-orders').innerText = orders.length;
+    }
+
+    // --- 6. LOAD ORDERS ---
+    // --- 6. LOAD ORDERS (New & Safe Version) ---
+    // 👇 पुराने loadOrders को हटाकर इसे पेस्ट करें 👇
+    // 👇 नया loadOrders (Bill बटन के साथ) 👇
+    async function loadOrders() {
+        try {
+            const res = await fetch('/api/admin/orders');
+            const orders = await res.json();
+            const tbody = document.getElementById('orderTable');
+            
+            if (!orders || orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center p-3">No orders found yet.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = orders.map(o => {
+                const cartItems = o.cart || [];
+                const cust = o.customer || { name: 'Unknown', phone: '-', city: '-' };
+
+                // Items list
+                const itemsHtml = cartItems.map(i => 
+                    `<div class="small text-muted border-bottom pb-1 mb-1">
+                        <strong>${i.name}</strong> <br>
+                        <span class="badge bg-secondary">Size: ${i.size || 'Free'}</span> 
+                        <span class="text-dark fw-bold"> x ${i.qty}</span>
+                    </div>`
+                ).join('');
+
+                let statusColor = 'bg-warning text-dark';
+                if(o.status === 'Shipped') statusColor = 'bg-success';
+                if(o.status === 'Cancelled') statusColor = 'bg-danger';
+
+                return `
+                <tr>
+                    <td>
+                        <strong>${o.orderId || 'No ID'}</strong><br>
+                        <span class="badge bg-light text-dark border">${o.paymentId || 'COD'}</span>
+                    </td>
+                    <td>${itemsHtml || '<span class="text-danger">Empty Cart</span>'}</td>
+                    <td>
+                        <strong>${cust.name}</strong><br>
+                        <small>${cust.phone}</small><br>
+                        <small class="text-muted">${cust.city}</small>
+                    </td>
+                    <td><span class="badge ${statusColor}">${o.status || 'Pending'}</span></td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            ${o.status !== 'Shipped' ? 
+                            `<button class="btn btn-primary btn-sm" onclick="shipOrder('${o.orderId}')">Ship Now</button>` : 
+                            `<small class="text-success fw-bold"><i class="fas fa-check"></i> Shipped<br>Ref: ${o.trackingId}</small>`}
+                            
+                            <button class="btn btn-outline-dark btn-sm" onclick="generateBill('${o.orderId}')">
+                                <i class="fas fa-file-invoice"></i> Download Bill
+                            </button>
+                        </div>
+                    </td>
+                </tr>`;
+            }).join('');
+
+        } catch (err) {
+            console.error("Error loading orders:", err);
+        }
+    }
+    async function shipOrder(orderId) {
+        const tracking = prompt("Enter Courier Name & Tracking ID:");
+        if(!tracking) return;
+
+        try {
+            const res = await fetch('/api/update-order', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ orderId, status: 'Shipped', trackingId: tracking })
+            });
+            const data = await res.json();
+            
+            if(data.success) {
+                alert("Order updated successfully!");
+                loadOrders(); // List refresh karein
+            }
+        } catch(err) {
+            alert("Error updating order.");
+        }
+    }
+    // --- 7. LOAD MESSAGES ---
+    async function loadMessages() {
+        const res = await fetch('/api/messages');
+        const msgs = await res.json();
+        document.getElementById('msg-list').innerHTML = msgs.map(m => `
+            <div class="col-12 mb-2">
+                <div class="card p-3">
+                    <strong>${m.name} <small class="text-muted">(${m.email})</small></strong>
+                    <p class="mb-0 mt-1">${m.message}</p>
+                    <small class="text-muted">${new Date(m.date).toDateString()}</small>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Initialize Dashboard
+    loadStats();
+    // 👇 नया बिल बनाने वाला फंक्शन (New Function) 👇
+    async function generateBill(orderId) {
+        // 1. आर्डर ढूँढो
+        const res = await fetch('/api/admin/orders');
+        const orders = await res.json();
+        const order = orders.find(o => o.orderId === orderId);
+        
+        if (!order) return alert("Order data not found!");
+
+        // 2. PDF बनाना शुरू
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // -- HEADER --
+        doc.setFontSize(22);
+        doc.setTextColor(13, 110, 253); // Blue Color
+        doc.text("OmniShop", 14, 20); // Brand Name
+        
+        doc.setFontSize(10);
+        doc.setTextColor(100);
+        doc.text("Premium Dropshipping Store", 14, 26);
+        doc.text("Email: support@omnishop.com", 14, 31);
+
+        doc.setFontSize(12);
+        doc.setTextColor(0);
+        doc.text("INVOICE", 150, 20);
+        doc.setFontSize(10);
+        doc.text(`Order ID: ${order.orderId}`, 150, 26);
+        doc.text(`Date: ${new Date().toLocaleDateString()}`, 150, 31);
+
+        // -- CUSTOMER DETAILS --
+        doc.setDrawColor(200);
+        doc.line(14, 35, 196, 35); // Line
+        
+        doc.setFontSize(12);
+        doc.text("Bill To:", 14, 45);
+        doc.setFontSize(10);
+        const cust = order.customer || {};
+        doc.text(cust.name || "Customer", 14, 52);
+        doc.text(`Phone: ${cust.phone || "-"}`, 14, 57);
+        doc.text(`Address: ${cust.address || "-"}, ${cust.city || "-"}`, 14, 62);
+
+        // -- ITEM TABLE --
+        const items = (order.cart || []).map(item => [
+            item.name,
+            item.size || "Free",
+            item.qty,
+            "Rs. " + (parseFloat(item.price) || 0)
+        ]);
+
+        doc.autoTable({
+            startY: 70,
+            head: [['Product Name', 'Size', 'Qty', 'Price']],
+            body: items,
+            theme: 'grid',
+            headStyles: { fillColor: [13, 110, 253] } // Blue Header
+        });
+
+        // -- TOTAL --
+        const finalY = doc.lastAutoTable.finalY + 10;
+        doc.setFontSize(14);
+        doc.text(`Total Amount: Rs. ${order.total}`, 140, finalY);
+
+        // -- FOOTER --
+        doc.setFontSize(10);
+        doc.setTextColor(150);
+        doc.text("Thank you for shopping with OmniShop!", 70, 280);
+
+        // 3. Save PDF
+        doc.save(`Invoice_${order.orderId}.pdf`);
+    }
+    // 👇👇 SIZE VARIANT LOGIC (इसे script में सबसे नीचे पेस्ट करें) 👇👇
+    let sizeVariants = [];
+
+    function addSizeVariant() {
+        const name = document.getElementById('size-name').value.trim();
+        const price = document.getElementById('size-price').value.trim();
+        
+        if(!name || !price) return alert("Enter both Size and Price!");
+
+        // लिस्ट में जोड़ें
+        sizeVariants.push({ name: name, price: price });
+        renderSizeList();
+        
+        // Input खाली करें
+        document.getElementById('size-name').value = '';
+        document.getElementById('size-price').value = '';
+    }
+
+    function renderSizeList() {
+        const list = document.getElementById('size-list');
+        const finalInput = document.getElementById('final-size-data');
+        
+        list.innerHTML = sizeVariants.map((s, i) => 
+            `<li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><b>${s.name}</b> - ₹${s.price}</span>
+                <button type="button" class="btn btn-sm btn-danger py-0" onclick="removeSize(${i})">X</button>
+            </li>`
+        ).join('');
+
+        // डेटा को JSON स्ट्रिंग बनाकर hidden input में डालें
+        finalInput.value = JSON.stringify(sizeVariants);
+    }
+
+    function removeSize(index) {
+        sizeVariants.splice(index, 1);
+        renderSizeList();
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+</body>
+</html>
