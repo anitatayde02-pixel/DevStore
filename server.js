@@ -7,11 +7,14 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 
 // --- EMAIL SETUP ---
+// ईमेल भेजने का नया और सुरक्षित (Secure) सेटअप
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // यह Render सर्वर के लिए 'सुरक्षित रास्ता' खोलता है
     auth: {
-        user: 'anitatayde02@gmail.com',  
-        pass: 'rrznudatemaqlhcd'      
+        user: 'anitatayde02@gmail.com', // यहाँ अपना ईमेल रहने दें 
+        pass: 'rrznudatemaqlhcd' 
     }
 });
 
